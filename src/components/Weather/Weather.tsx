@@ -1,8 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {WeatherCityInfo} from "./WeatherCityInfo";
 import {WeatherInfo} from "./WeatherInfo";
-import {CurrentType, LocationType} from '../../types';
-import {useHttp} from '../../hooks/http.hook';
 import {WeatherContext} from "../../context/weatherContext";
 
 

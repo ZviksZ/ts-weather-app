@@ -2,7 +2,6 @@ import React, {useReducer} from 'react'
 import axios from 'axios'
 import {WeatherContext} from "./weatherContext";
 import {weatherReducer, FETCH_WEATHER} from "./weatherReducer";
-import {useHttp} from "../hooks/http.hook";
 import {CurrentType, LocationType} from "../types";
 
 interface Props {

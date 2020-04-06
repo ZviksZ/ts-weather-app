@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Weather} from "./components/Weather/Weather";
 import {Search} from "./components/Search/Search";
 import {WeatherState} from "./context/weatherState";
