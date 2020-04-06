@@ -1,44 +1,28 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {WeatherCityInfo} from "./WeatherCityInfo";
 import {WeatherInfo} from "./WeatherInfo";
 import {CurrentType, LocationType} from '../../types';
 import {useHttp} from '../../hooks/http.hook';
+import {WeatherContext} from "../../context/weatherContext";
 
 
 export const Weather:React.FC = () => {
-    const {loading, error, request, clearError} = useHttp()
-
-    // eslint-disable-next-line
-    const [data, setData] = useState({
-        location: {} as LocationType,
-        current: {} as CurrentType
-    })
-
-
-
+    const {getWeather, location, current} = useContext(WeatherContext)
 
     // eslint-disable-next-line
     useEffect(() => {
-        const fetchStartWeather = async () => {
-            try {
-                const data = await request(`http://api.weatherstack.com/current?access_key=520adfa485ef88398bba278d8f42b028&query=Donetsk Ukraine`)
-
-                setData({
-                    location: data.location,
-                    current: data.current
-                })
-            } catch (e) {
-                console.log(error)
-            }
-        }
-        fetchStartWeather()
+        getWeather(`Donetsk Ukraine`)
     }, [])
+
+    if (Object.keys(location).length == 0 || Object.keys(current).length == 0)  {
+        return <div>Ничего нет</div>
+    }
 
     return (
         <div className="container">
-            <h1>{data?.location?.name} {data?.location?.country}</h1>
-            <WeatherCityInfo location={data.location}/>
-            <WeatherInfo currentWeather={data.current}/>
+            <h1>{location?.name} {location?.country}</h1>
+            <WeatherCityInfo location={location}/>
+            <WeatherInfo currentWeather={current}/>
         </div>
     );
 }

@@ -6,11 +6,11 @@ type WeatherCityInfoProps = {
 }
 
 export const WeatherCityInfo:React.FC<WeatherCityInfoProps> = ({location}) => {
+
+
     return (
         <div>
-            {
-                location.region
-            }
+
         </div>
     );
 }
