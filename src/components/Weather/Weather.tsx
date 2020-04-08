@@ -2,23 +2,27 @@ import React, {useContext, useEffect} from 'react';
 import {WeatherCityInfo} from "./WeatherCityInfo";
 import {WeatherInfo} from "./WeatherInfo";
 import {WeatherContext} from "../../context/weatherContext";
+import {Loader} from "../Loader/Loader";
 
 
 export const Weather:React.FC = () => {
-    const {getWeather, location, current} = useContext(WeatherContext)
+    const {getWeather, location, current, loading} = useContext(WeatherContext)
 
-    // eslint-disable-next-line
     useEffect(() => {
         getWeather(`Donetsk Ukraine`)
+        // eslint-disable-next-line
     }, [])
 
-    if (Object.keys(location).length == 0 || Object.keys(current).length == 0)  {
-        return <div>Ничего нет</div>
+    if (loading || !location || !current)  {
+        return (
+            <div className="">
+                <Loader/>
+            </div>
+        )
     }
 
     return (
-        <div className="container">
-            <h1>{location?.name} {location?.country}</h1>
+        <div className="">
             <WeatherCityInfo location={location}/>
             <WeatherInfo currentWeather={current}/>
         </div>
