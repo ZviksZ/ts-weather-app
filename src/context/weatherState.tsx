@@ -29,7 +29,7 @@ export const WeatherState: React.FC<Props> = ({children}) => {
             dispatch({type: SHOW_LOADER})
             dispatch({type: CURRENT_QUERY,payload: query})
 
-            let data = await axios.get(BASE_API_URI + query + `?units=m`).then(response => response.data);
+            let data = await axios.get(BASE_API_URI + query).then(response => response.data);
             dispatch({
                 type: FETCH_WEATHER,
                 payload: { location: data.location, current: data.current }

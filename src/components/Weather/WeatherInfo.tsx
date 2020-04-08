@@ -1,5 +1,6 @@
 import React from 'react';
 import {CurrentType} from "../../types";
+import './Weather.scss'
 
 type WeatherInfoProps = {
     currentWeather: CurrentType
@@ -7,7 +8,7 @@ type WeatherInfoProps = {
 
 export const WeatherInfo: React.FC<WeatherInfoProps> = ({currentWeather}) => {
     return (
-        <table className="">
+        <table className="animateTable">
             <thead>
             <tr>
                 <th></th>
@@ -19,11 +20,11 @@ export const WeatherInfo: React.FC<WeatherInfoProps> = ({currentWeather}) => {
             </thead>
             <tbody>
             <tr>
-                <td><img src={currentWeather.weather_icons[0]} alt="icon"/></td>
-                <td>{currentWeather.temperature}&deg;</td>
-                <td>{currentWeather.feelslike}&deg;</td>
-                <td>{currentWeather.weather_descriptions}</td>
-                <td>{currentWeather.humidity}</td>
+                <td className="delay1"><img src={currentWeather.weather_icons[0]} alt="icon"/></td>
+                <td className="delay2">{currentWeather.temperature}&deg;</td>
+                <td className="delay3">{currentWeather.feelslike}&deg;</td>
+                <td className="delay4">{currentWeather.weather_descriptions}</td>
+                <td className="delay5">{currentWeather.humidity}</td>
             </tr>
             </tbody>
         </table>

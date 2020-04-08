@@ -10,7 +10,7 @@ export const WeatherCityInfo:React.FC<WeatherCityInfoProps> = ({location}) => {
     return (
         <div>
             <h3>{location.name} {location.country}</h3>
-            <p>{location.localtime}</p>
+            <p><strong>{location.localtime}</strong></p>
         </div>
     );
 }
